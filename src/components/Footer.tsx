@@ -5,10 +5,10 @@ export default function Footer() {
         <div className="text-center md:text-left">
           <p className="text-[#00d2ff] font-bold text-lg mb-1">PyExam Prep</p>
           <p className="text-[#9ca3af] text-sm">
-            BIS Introduction to Programming (BIS2108)
+            BIS Introduction to Programming
           </p>
           <p className="text-[#6b7280] text-xs mt-1">
-            MSA University — College of Management &amp; Technology
+            AASTMT — For BIS Students
           </p>
         </div>
         <div className="text-center md:text-right">
