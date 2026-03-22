@@ -229,7 +229,7 @@ function PracticeContent() {
                   <div key={tq.id} className="glass-card-static p-6">
                     <div className="flex items-start gap-4">
                       <span className="text-[#6b7280] text-sm font-mono min-w-[2rem]">Q{tq.id}</span>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p className="text-[#ebedfb] mb-4">{tq.statement}</p>
                         {tq.codeSnippet && (
                           <pre className="code-block p-4 mb-4 text-[#e2e8f0]">{tq.codeSnippet}</pre>
@@ -283,7 +283,7 @@ function PracticeContent() {
                   <div key={mq.id} className="glass-card-static p-6">
                     <div className="flex items-start gap-4">
                       <span className="text-[#6b7280] text-sm font-mono min-w-[2rem]">Q{mq.id}</span>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p className="text-[#ebedfb] mb-3">{mq.question}</p>
                         {mq.codeSnippet && (
                           <pre className="code-block p-4 mb-4 text-[#e2e8f0] whitespace-pre-wrap">{mq.codeSnippet}</pre>
@@ -332,7 +332,7 @@ function PracticeContent() {
                   <div key={tq.id} className="glass-card-static p-6">
                     <div className="flex items-start gap-4">
                       <span className="text-[#6b7280] text-sm font-mono min-w-[2rem]">Q{tq.id}</span>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p className="text-[#ebedfb] mb-3 font-semibold">What is the output of this code?</p>
                         {tq.userInput && (
                           <p className="text-[#f59e0b] text-sm mb-2">User input: {tq.userInput}</p>
@@ -380,7 +380,7 @@ function PracticeContent() {
                   <div key={eq.id} className="glass-card-static p-6">
                     <div className="flex items-start gap-4">
                       <span className="text-[#6b7280] text-sm font-mono min-w-[2rem]">Q{eq.id}</span>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p className="text-[#ebedfb] mb-2 font-semibold">{eq.description}</p>
                         <p className="text-[#f59e0b] text-xs mb-3">Find {eq.errors.length} error(s) in the code below:</p>
                         <pre className="code-block p-4 mb-4 text-[#e2e8f0] whitespace-pre-wrap">
@@ -426,7 +426,7 @@ function PracticeContent() {
                   <div key={wq.id} className="glass-card-static p-6">
                     <div className="flex items-start gap-4">
                       <span className="text-[#6b7280] text-sm font-mono min-w-[2rem]">Q{wq.id}</span>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p className="text-[#ebedfb] mb-3 font-semibold">{wq.prompt}</p>
                         <div className="mb-4 p-3 rounded-lg bg-[#0d1117] border border-[rgba(114,220,255,0.1)]">
                           <p className="text-[#6b7280] text-xs uppercase tracking-wider mb-1">Example Run:</p>
