@@ -125,11 +125,37 @@ function PracticeContent() {
       <Navbar />
       <main className="pt-20 flex-grow flex flex-col lg:flex-row">
         {/* Sidebar */}
-        <aside className="lg:w-64 lg:min-h-screen lg:border-r border-b lg:border-b-0 border-[rgba(114,220,255,0.1)] bg-[#080c18] p-4 lg:p-6 lg:sticky lg:top-20 lg:self-start">
+        <aside className="lg:w-64 lg:min-h-screen lg:border-r border-b lg:border-b-0 border-[rgba(114,220,255,0.1)] bg-[#080c18] p-3 sm:p-4 lg:p-6 lg:sticky lg:top-20 lg:self-start">
           <h2 className="text-sm font-bold text-[#6b7280] uppercase tracking-widest mb-4 hidden lg:block">
             Sections
           </h2>
-          <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+          {/* Mobile: 5-column grid with icons + short labels */}
+          <div className="grid grid-cols-5 gap-1.5 lg:hidden">
+            {SECTION_TITLES.map((title, i) => {
+              const shortLabels = ["T/F", "MCQ", "Trace", "Errors", "Code"];
+              return (
+                <button
+                  key={title}
+                  onClick={() => setActiveSection(i)}
+                  className={`flex flex-col items-center gap-1 px-1 py-2.5 rounded-xl text-xs font-medium transition-all ${
+                    activeSection === i
+                      ? "bg-[#00d2ff]/10 border border-[#00d2ff]/30 text-[#00d2ff]"
+                      : "text-[#9ca3af] hover:bg-[#111827] border border-transparent"
+                  }`}
+                >
+                  <span className="text-lg leading-none">{SECTION_ICONS[i]}</span>
+                  <span className="text-[10px] leading-tight">{shortLabels[i]}</span>
+                  <span className={`text-[9px] px-1.5 py-0.5 rounded-full mt-0.5 ${
+                    scores[i] > 0 ? "bg-[#10b981]/20 text-[#10b981]" : "bg-[#1a2235] text-[#6b7280]"
+                  }`}>
+                    {scores[i]}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          {/* Desktop: vertical list */}
+          <div className="hidden lg:flex flex-col gap-2">
             {SECTION_TITLES.map((title, i) => (
               <button
                 key={title}
@@ -141,7 +167,7 @@ function PracticeContent() {
                 }`}
               >
                 <span className="text-lg">{SECTION_ICONS[i]}</span>
-                <span className="hidden lg:inline">{title}</span>
+                <span>{title}</span>
                 <span className={`ml-auto text-xs px-2 py-0.5 rounded-full ${
                   scores[i] > 0 ? "bg-[#10b981]/20 text-[#10b981]" : "bg-[#1a2235] text-[#6b7280]"
                 }`}>
@@ -150,7 +176,18 @@ function PracticeContent() {
               </button>
             ))}
           </div>
-          {/* Score summary */}
+          {/* Mobile: score bar */}
+          <div className="lg:hidden mt-3 flex items-center gap-3 px-2">
+            <span className="text-xs text-[#6b7280]">Score:</span>
+            <span className="text-sm font-bold text-[#00d2ff]">{scores.reduce((a, b) => a + b, 0)}/250</span>
+            <div className="flex-1 h-1.5 bg-[#1a2235] rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-[#00d2ff] to-[#10b981] rounded-full transition-all duration-500"
+                style={{ width: `${(scores.reduce((a, b) => a + b, 0) / 250) * 100}%` }}
+              />
+            </div>
+          </div>
+          {/* Desktop: score summary */}
           <div className="hidden lg:block mt-8 pt-6 border-t border-[rgba(114,220,255,0.08)]">
             <p className="text-xs text-[#6b7280] uppercase tracking-widest mb-2">Total Score</p>
             <p className="text-3xl font-black text-[#00d2ff]">
