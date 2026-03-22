@@ -1,0 +1,24 @@
+{
+  "name": "projects/12490982351171195591",
+  "projectId": "12490982351171195591",
+  "title": "PyExam Prep - BIS Introduction to Programming",
+  "visibility": "PRIVATE",
+  "projectType": "PROJECT_DESIGN",
+  "origin": "STITCH",
+  "deviceType": "MOBILE",
+  "designTheme": {
+    "colorMode": "DARK",
+    "font": "INTER",
+    "roundness": "ROUND_EIGHT",
+    "customColor": "#00d2ff",
+    "saturation": 3
+  },
+  "screens": {
+    "landing": {
+      "id": "d943669720f3422fa6483f6c5b99ec24",
+      "sourceScreen": "projects/12490982351171195591/screens/d943669720f3422fa6483f6c5b99ec24",
+      "width": 780,
+      "height": 7456
+    }
+  }
+}
