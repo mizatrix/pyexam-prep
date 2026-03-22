@@ -40,7 +40,7 @@ export default function Home() {
               Exams
             </h1>
             <p className="text-xl md:text-2xl text-[#9ca3af] max-w-2xl mx-auto font-light leading-relaxed">
-              Practice with 250+ interactive programming questions and ace your
+              Practice with 370+ interactive programming questions and ace your
               BIS Introduction to Programming exam.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
@@ -59,11 +59,11 @@ export default function Home() {
         <section className="px-6 py-8 border-y border-[rgba(114,220,255,0.08)]">
           <div className="max-w-4xl mx-auto grid grid-cols-3 gap-4 text-center">
             <div>
-              <p className="text-3xl font-black text-[#00d2ff]">250+</p>
+              <p className="text-3xl font-black text-[#00d2ff]">370+</p>
               <p className="text-[#6b7280] text-sm mt-1">Practice Questions</p>
             </div>
             <div>
-              <p className="text-3xl font-black text-[#10b981]">5</p>
+              <p className="text-3xl font-black text-[#10b981]">11</p>
               <p className="text-[#6b7280] text-sm mt-1">Question Types</p>
             </div>
             <div>
