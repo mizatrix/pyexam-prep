@@ -8,6 +8,12 @@ const sections = [
   { icon: "▶", title: "Trace the Output", marks: 8, count: 50, desc: "Read Python code and predict the exact console output — the most critical exam skill.", color: "from-[#10b981]/10 to-[#00d2ff]/5", borderHover: "hover:border-[#10b981]/40" },
   { icon: "🐛", title: "Find & Fix Errors", marks: 4, count: 50, desc: "Spot bugs in Python code and write the correct fix — a key debugging exercise.", color: "from-[#f59e0b]/10 to-[#ef4444]/5", borderHover: "hover:border-[#f59e0b]/40" },
   { icon: "💻", title: "Write Code", marks: 8, count: 50, desc: "Write complete Python programs from scratch with guided hints and model solutions.", color: "from-[#8b5cf6]/10 to-[#00d2ff]/5", borderHover: "hover:border-[#8b5cf6]/40" },
+  { icon: "✏️", title: "Fill in the Blank", marks: 0, count: 20, desc: "Complete Python code by filling in the missing keyword, function, or value.", color: "from-[#ec4899]/10 to-[#f43f5e]/5", borderHover: "hover:border-[#ec4899]/40" },
+  { icon: "🧮", title: "Expression Eval", marks: 0, count: 20, desc: "Calculate the result of Python expressions — master operator precedence and types.", color: "from-[#14b8a6]/10 to-[#06b6d4]/5", borderHover: "hover:border-[#14b8a6]/40" },
+  { icon: "🔀", title: "Code Reorder", marks: 0, count: 20, desc: "Arrange shuffled lines of code in the correct order to form a working program.", color: "from-[#f97316]/10 to-[#f59e0b]/5", borderHover: "hover:border-[#f97316]/40" },
+  { icon: "🔗", title: "Match Pairs", marks: 0, count: 20, desc: "Match Python concepts, functions, and operators to their definitions and outputs.", color: "from-[#a855f7]/10 to-[#8b5cf6]/5", borderHover: "hover:border-[#a855f7]/40" },
+  { icon: "📝", title: "Complete Function", marks: 0, count: 20, desc: "Write the body of a Python function given its signature and expected output.", color: "from-[#22d3ee]/10 to-[#3b82f6]/5", borderHover: "hover:border-[#22d3ee]/40" },
+  { icon: "📊", title: "Flowchart → Code", marks: 0, count: 20, desc: "Read algorithm flowcharts and pick the Python code that implements them correctly.", color: "from-[#84cc16]/10 to-[#10b981]/5", borderHover: "hover:border-[#84cc16]/40" },
 ];
 
 export default function Home() {
@@ -86,12 +92,12 @@ export default function Home() {
               <Link
                 key={s.title}
                 href={`/practice?section=${i}`}
-                className={`glass-card p-8 flex flex-col justify-between group ${s.borderHover} bg-gradient-to-b ${s.color} min-h-[220px] opacity-0 animate-slide-up stagger-${i + 1}`}
+                className={`glass-card p-8 flex flex-col justify-between group ${s.borderHover} bg-gradient-to-b ${s.color} min-h-[220px] opacity-0 animate-slide-up stagger-${(i % 5) + 1}`}
               >
                 <div className="flex items-start justify-between mb-6">
                   <span className="text-3xl">{s.icon}</span>
-                  <span className="px-3 py-1 rounded-full bg-[#00d2ff]/10 text-[#00d2ff] text-xs font-bold">
-                    {s.marks} Marks
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${s.marks > 0 ? "bg-[#00d2ff]/10 text-[#00d2ff]" : "bg-[#10b981]/10 text-[#10b981]"}`}>
+                    {s.marks > 0 ? `${s.marks} Marks` : "Bonus"}
                   </span>
                 </div>
                 <div>
