@@ -56,6 +56,21 @@ function PracticeContent() {
     setPage(0);
   };
 
+  const resetAll = () => {
+    setTfAnswers({});
+    setTfRevealed({});
+    setMcqAnswers({});
+    setMcqRevealed({});
+    setTraceAnswers({});
+    setTraceRevealed({});
+    setErrorRevealed({});
+    setCodeAnswers({});
+    setCodeHintLevel({});
+    setCodeRevealed({});
+    setScores([0, 0, 0, 0, 0]);
+    setPage(0);
+  };
+
   const getQuestions = () => {
     const all = [trueFalseQuestions, mcqQuestions, traceOutputQuestions, findErrorQuestions, writeCodeQuestions];
     return all[activeSection];
@@ -208,13 +223,19 @@ function PracticeContent() {
         <div className="flex-1 min-w-0 p-4 md:p-8 max-w-4xl mx-auto w-full">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-[#ebedfb]">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#ebedfb]">
                 {SECTION_ICONS[activeSection]} {SECTION_TITLES[activeSection]}
               </h1>
               <p className="text-[#6b7280] text-sm mt-1">
                 {answeredCount()} of {getQuestions().length} answered • Score: {scores[activeSection]}
               </p>
             </div>
+            <button
+              onClick={resetAll}
+              className="px-3 sm:px-4 py-2 bg-[#ef4444]/10 border border-[#ef4444]/30 text-[#ef4444] rounded-lg text-xs sm:text-sm font-bold hover:bg-[#ef4444]/20 transition-all"
+            >
+              ↺ Reset All
+            </button>
           </div>
 
           {/* Questions */}
