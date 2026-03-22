@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -51,9 +51,10 @@ function PracticeContent() {
   // Score tracking
   const [scores, setScores] = useState([0, 0, 0, 0, 0]);
 
-  useEffect(() => {
+  const switchSection = (idx: number) => {
+    setActiveSection(idx);
     setPage(0);
-  }, [activeSection]);
+  };
 
   const getQuestions = () => {
     const all = [trueFalseQuestions, mcqQuestions, traceOutputQuestions, findErrorQuestions, writeCodeQuestions];
@@ -136,7 +137,7 @@ function PracticeContent() {
               return (
                 <button
                   key={title}
-                  onClick={() => setActiveSection(i)}
+                  onClick={() => switchSection(i)}
                   className={`flex flex-col items-center gap-1 px-1 py-2.5 rounded-xl text-xs font-medium transition-all ${
                     activeSection === i
                       ? "bg-[#00d2ff]/10 border border-[#00d2ff]/30 text-[#00d2ff]"
@@ -159,7 +160,7 @@ function PracticeContent() {
             {SECTION_TITLES.map((title, i) => (
               <button
                 key={title}
-                onClick={() => setActiveSection(i)}
+                onClick={() => switchSection(i)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm font-medium transition-all whitespace-nowrap ${
                   activeSection === i
                     ? "bg-[#00d2ff]/10 border border-[#00d2ff]/30 text-[#00d2ff]"
@@ -204,7 +205,7 @@ function PracticeContent() {
         </aside>
 
         {/* Main Content */}
-        <div className="flex-1 p-4 md:p-8 max-w-4xl mx-auto w-full">
+        <div className="flex-1 min-w-0 p-4 md:p-8 max-w-4xl mx-auto w-full">
           <div className="flex items-center justify-between mb-8">
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-[#ebedfb]">
@@ -285,7 +286,7 @@ function PracticeContent() {
                       <div className="flex-1">
                         <p className="text-[#ebedfb] mb-3">{mq.question}</p>
                         {mq.codeSnippet && (
-                          <pre className="code-block p-4 mb-4 text-[#e2e8f0] whitespace-pre">{mq.codeSnippet}</pre>
+                          <pre className="code-block p-4 mb-4 text-[#e2e8f0] whitespace-pre-wrap">{mq.codeSnippet}</pre>
                         )}
                         <div className="space-y-2">
                           {mq.options.map((opt: string, i: number) => {
@@ -336,7 +337,7 @@ function PracticeContent() {
                         {tq.userInput && (
                           <p className="text-[#f59e0b] text-sm mb-2">User input: {tq.userInput}</p>
                         )}
-                        <pre className="code-block p-4 mb-4 text-[#e2e8f0] whitespace-pre">{tq.code}</pre>
+                        <pre className="code-block p-4 mb-4 text-[#e2e8f0] whitespace-pre-wrap">{tq.code}</pre>
                         <div className="mb-3">
                           <label className="text-[#6b7280] text-xs uppercase tracking-wider mb-1 block">Your Output:</label>
                           <textarea
@@ -361,7 +362,7 @@ function PracticeContent() {
                               {isCorrect ? "✓ Correct!" : "✗ Incorrect"}
                             </p>
                             <p className="text-[#6b7280] text-xs mb-1">Expected output:</p>
-                            <pre className="terminal-output p-3 mb-2 whitespace-pre">{tq.expectedOutput}</pre>
+                            <pre className="terminal-output p-3 mb-2 whitespace-pre-wrap">{tq.expectedOutput}</pre>
                             <p className="text-[#9ca3af] text-sm">{tq.explanation}</p>
                           </div>
                         )}
@@ -382,7 +383,7 @@ function PracticeContent() {
                       <div className="flex-1">
                         <p className="text-[#ebedfb] mb-2 font-semibold">{eq.description}</p>
                         <p className="text-[#f59e0b] text-xs mb-3">Find {eq.errors.length} error(s) in the code below:</p>
-                        <pre className="code-block p-4 mb-4 text-[#e2e8f0] whitespace-pre">
+                        <pre className="code-block p-4 mb-4 text-[#e2e8f0] whitespace-pre-wrap">
                           {eq.buggyCode.split("\n").map((line: string, i: number) => (
                             <div key={i} className="flex">
                               <span className="code-line-number pr-3 mr-3">{i + 1}</span>
@@ -429,7 +430,7 @@ function PracticeContent() {
                         <p className="text-[#ebedfb] mb-3 font-semibold">{wq.prompt}</p>
                         <div className="mb-4 p-3 rounded-lg bg-[#0d1117] border border-[rgba(114,220,255,0.1)]">
                           <p className="text-[#6b7280] text-xs uppercase tracking-wider mb-1">Example Run:</p>
-                          <pre className="text-[#10b981] text-sm whitespace-pre font-mono">{wq.exampleRun}</pre>
+                          <pre className="text-[#10b981] text-sm whitespace-pre-wrap font-mono">{wq.exampleRun}</pre>
                         </div>
                         {hintLevel > 0 && (
                           <div className="mb-4 space-y-2">
@@ -467,7 +468,7 @@ function PracticeContent() {
                         {revealed && (
                           <div className="mt-4 p-4 rounded-lg bg-[#10b981]/5 border border-[#10b981]/20">
                             <p className="text-[#10b981] text-sm font-bold mb-2">Sample Solution:</p>
-                            <pre className="code-block p-4 text-[#e2e8f0] whitespace-pre">{wq.sampleSolution}</pre>
+                            <pre className="code-block p-4 text-[#e2e8f0] whitespace-pre-wrap">{wq.sampleSolution}</pre>
                           </div>
                         )}
                       </div>

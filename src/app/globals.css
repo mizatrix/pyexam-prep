@@ -71,6 +71,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 /* Scrollbar */
@@ -115,6 +116,8 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--color-border);
   border-radius: 1rem;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 /* Hero glow */
@@ -131,6 +134,23 @@ body {
   font-size: 0.875rem;
   line-height: 1.7;
   overflow-x: auto;
+  max-width: 100%;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 640px) {
+  .code-block {
+    font-size: 0.75rem;
+    padding: 0.75rem !important;
+    line-height: 1.5;
+  }
+  .terminal-input {
+    font-size: 0.75rem;
+  }
+  .terminal-output {
+    font-size: 0.75rem;
+  }
 }
 
 .code-line-number {
